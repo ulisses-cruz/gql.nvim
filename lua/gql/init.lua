@@ -197,10 +197,4 @@ M.setup = function(options)
     })
 end
 
-vim.keymap.set('n', '<leader><leader>x', function()
-    package.loaded.gql = nil
-    loadfile '/Users/ulissescruz/projects/ulnitek/nvim_plugins/gql/lua/gql/init.lua'
-    require('gql').actions.run()
-end)
-
 return M
