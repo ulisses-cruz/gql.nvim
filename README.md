@@ -35,7 +35,7 @@ use {
     require 'gql'.setup {
       fileTypes = { 'graphql' },
       keymaps = { 
-        run = '<leader>rn'
+        run = '<leader>rr'
       }
     }  
   end
