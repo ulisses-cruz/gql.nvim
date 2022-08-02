@@ -1,0 +1,18 @@
+# endpoint: https://countries.trevorblades.com/
+
+{
+  countries {
+    code
+    name
+  }
+}
+
+# variables: {
+#   "code": "CV"
+# }
+query Country($code: ID!) {
+  country(code: $code) {
+    code
+    name
+  }
+}
