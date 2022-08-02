@@ -127,6 +127,9 @@ local function get_variables(metadata)
         return nil
     end
     local vtext = string.match(metadata, '#%s*variables%s*:%s*{(.*)}')
+    if not vtext then
+        return nil
+    end
     local vars = {}
     for k, v in string.gmatch(vtext, '"(%w+)"%s*:%s*"?(%w*)"?') do
         vars[k] = v
