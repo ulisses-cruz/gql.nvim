@@ -10,6 +10,14 @@ Simple graphql client for Neovim
 
 Inspired by [rest.nvim](https://github.com/NTBBloodbath/rest.nvim)
 
+## Dependencies
+This plugin uses `curl` to send the requests. You need to rave `curl` installed in your system.
+It uses `treesitter` to identify the queries. You need `treesitter` installed in your neovim instance and the `graphql` parser.
+
+```vim
+:TSInstall graphql
+```
+
 ## Instalation
 
 #### Via Packer
