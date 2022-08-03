@@ -1,0 +1,112 @@
+------------------------------------------------------------------------------
+
+                         o888                            o88                 
+     oooooooo8  ooooooooo 888      oo oooooo oooo   oooo oooo  oo ooo oooo   
+   888    88o 888    888  888       888   888 888   888   888   888 888 888  
+    888oo888o 888    888  888  ooo  888   888  888 888    888   888 888 888  
+   888     888  88ooo888 o888o 888 o888o o888o   888     o888o o888o888o888o 
+    888ooo888        888o                                                    
+
+------------------------------------------------------------------------------
+		       Simple graphql client for neovim
+------------------------------------------------------------------------------
+DEPENDENCIES
+							    *gql-dependencies*
+
+This plugin users `curl` to send the requests. You need to have `curl`
+installed in your system. It also uses `treesitter` to identify the queries.
+You need `treesitter` installed in your neovim instance and the `graphql`
+parser.
+  
+  `:TSInstall graphql`
+
+------------------------------------------------------------------------------
+INSTALLATION
+							    *gql-installation*
+
+
+Via Packer:
+  
+  use 'ulisses-cruz/gql.nvim'`
+
+------------------------------------------------------------------------------
+CONFIGURATION
+							   *gql-configuration*
+
+Via Packer:
+
+  `use {
+    'ulisses-cruz/gql.nvim',
+    config = function()
+      require 'gql'. setup {
+	  fileTypes = { 'graphql' },
+	  keymaps = {
+	      run = '<leader>rr'
+	    }
+	}
+    end
+  }`
+
+There are only to configuration options for now:
+
+- `fileTypes`: A list of file types the plugin shoul attach to.
+  Defaults to { 'graphql' }.
+- `keymaps`: A table of action/keymap pairs. Currently there's only the run
+action. It has no default keymap.
+
+------------------------------------------------------------------------------
+USAGE
+								   *gql-usage*
+1. Go to a `graphql` file where you have your queries;
+2. Put the cursor on the query you what to run (not the query metadata);
+3. press the keymap you set in your configuration;
+
+You should be prompt to enter the `endpoint` the query should be sent to. 
+After entering the `endpoint` a split window should open to show the 
+query response.
+
+If you don't want to enter the `endpoint` every time, add it as a metadata to
+the query. You can do that by adding `# endpoint: <your-endpoint>` above the
+query.
+
+  `# endpoint: https://countries.trevorblades.com/
+  {
+    countries {
+      code
+      name
+    }
+  }`
+
+You can also configure a default endpoint for all queries in the file, by 
+adding the metadata as the first line of the file. The metadata added above
+each query has precedence.
+
+  `# endpoint: https://countries.trevorblades.com/
+
+  {
+    countries {
+      code
+      name
+    }
+  }
+
+  query Country($code: ID!) {
+    country(code: $code) {
+      code
+      name
+    }
+  }`
+
+If your query requires any variable, you can set them as metadata also:
+
+  `# variables: {
+  `#   "code": "CV"
+  # }
+    query Country($code: ID!) {
+    country(code: $code) {
+      code
+      name
+    }
+  }`
+
+vim:tw=78:ts=8:ft=help:norl:
