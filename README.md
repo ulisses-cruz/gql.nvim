@@ -11,6 +11,7 @@ Simple graphql client for Neovim
 Inspired by [rest.nvim](https://github.com/NTBBloodbath/rest.nvim)
 
 ## Dependencies
+
 This plugin uses `curl` to send the requests. You need to have `curl` installed in your system.
 It uses `treesitter` to identify the queries. You need `treesitter` installed in your neovim instance and the `graphql` parser.
 
@@ -21,6 +22,7 @@ It uses `treesitter` to identify the queries. You need `treesitter` installed in
 ## Instalation
 
 #### Via Packer
+
 ```lua
 use 'ulisses-cruz/gql.nvim'
 ```
@@ -28,21 +30,24 @@ use 'ulisses-cruz/gql.nvim'
 ## Configuration
 
 #### Via Packer
+
 ```lua
-use { 
-  'ulisses-cruz/gql.nvim', 
+use {
+  'ulisses-cruz/gql.nvim',
   config = function()
     require 'gql'.setup {
-      fileTypes = { 'graphql' },
-      keymaps = { 
+      filetypes = { 'graphql' },
+      keymaps = {
         run = '<leader>rr'
       }
-    }  
+    }
   end
 }
 ```
+
 There are only to configuration options for now:
-- **fileTypes**: A list of file types the plugin shoul attach to. Defaults to `{ 'graphql' }`.
+
+- **filetypes**: A list of file types the plugin shoul attach to. Defaults to `{ 'graphql' }`.
 - **keymaps**: A table of action/keymap pairs. Currently there's only the `run` action. It has no default keymap.
 
 ## Usage
@@ -53,7 +58,7 @@ There are only to configuration options for now:
 
 You should be prompt to enter the `endpoint` the query should be sent to. After entering the `endpoint` a split window should open to show the query response.
 
-If you don't want to enter the `endpoint` every time, add it as a metadata to the query. 
+If you don't want to enter the `endpoint` every time, add it as a metadata to the query.
 You can do that by adding `# endpoint: <your-endpoint>` above the query.
 
 ```graphql
@@ -66,7 +71,7 @@ You can do that by adding `# endpoint: <your-endpoint>` above the query.
 }
 ```
 
-You can also configure a default endpoint for all queries in the file, by adding the metadata as the **first line** of the file. 
+You can also configure a default endpoint for all queries in the file, by adding the metadata as the **first line** of the file.
 The metadata added above each query has precedence.
 
 ```graphql
@@ -85,8 +90,8 @@ query Country($code: ID!) {
     name
   }
 }
-
 ```
+
 If your query requires any variable, you can set them as metadata also:
 
 ```graphql

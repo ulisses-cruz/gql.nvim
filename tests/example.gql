@@ -1,4 +1,4 @@
-# endpoint: https://countries.trevorblades.com/
+# endpoint: https://countries.trevorblades.com
 
 {
   countries {
@@ -8,7 +8,7 @@
 }
 
 # variables: {
-#   "code": "CV"
+#   "code": "US"
 # }
 query Country($code: ID!) {
   country(code: $code) {
