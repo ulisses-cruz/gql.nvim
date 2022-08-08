@@ -91,7 +91,7 @@ function parser.get_metadata_text(bufnr)
     if first == last then
         return nil
     else
-        first = first - 1
+        first = first + 1
     end
     local lines = vim.api.nvim_buf_get_lines(bufnr, first, last, false)
 
